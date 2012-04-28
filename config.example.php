@@ -59,8 +59,6 @@ $program_list_output = array(
 $json_output = array(
 	"menu" => "tmp/api/menu/menu.json.js",
 	"sponsors" => "src/api/sponsors/sponsors.json.js",
-	"program_list" => "src/api/program/program.json.js",
-	"program_types" => "src/api/program/types/types.json.js",
-	"program_rooms" => "src/api/program/rooms/rooms.json.js"
+	"program" => "src/api/program/program.json.js"
 );
 

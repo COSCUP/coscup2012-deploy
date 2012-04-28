@@ -707,18 +707,13 @@ else
 		}
 	}
 
-	print "Write program into " . $json_output["program_list"] . " .\n";
-	$fp = fopen ($json_output["program_list"], "w");
-	fwrite ($fp, json_encode($program_list));
-	fclose ($fp);
-
-	print "Write program type into " . $json_output["program_types"] . " .\n";	
-	$fp = fopen ($json_output["program_types"], "w");
-	fwrite ($fp, json_encode($program_types_list));
-	fclose ($fp);
-
-	print "Write program room into " . $json_output["program_rooms"] . " .\n";
-	$fp = fopen ($json_output["program_rooms"], "w");
-	fwrite ($fp, json_encode($program_rooms_list));
+	print "Write program into " . $json_output["program"] . " .\n";
+	$fp = fopen ($json_output["program"], "w");
+	fwrite ($fp, json_encode(
+		array(
+			'program' => $program_list,
+			'type' => $program_types_list,
+			'room' => $program_rooms_list
+		)));
 	fclose ($fp);
 }
