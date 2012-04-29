@@ -4,6 +4,6 @@ include_once("deploy.php");
 
 print ("= Updating Deploy Script =\n");
 system ("git fetch origin");
-system ("git checkout -q origin/master");
+system ("git checkout -q origin/git");
 system ("git log -1");
 print ("\n");
