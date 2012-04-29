@@ -3,8 +3,8 @@ include_once("deploy.php");
 
 print ("= Updating Theme =\n");
 chdir (THEME_PATH);
-system ("git reset --hard");
-system ("git pull origin master");
+system ("git fetch origin");
+system ("git checkout -q origin/master");
 system ("git log -1");
 chdir ($cwd);
 print ("\n");
