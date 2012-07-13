@@ -13,7 +13,7 @@ function linkify($text){
 
 function get_program_list_from_gdoc() {
 
-	$handle = @fopen('https://spreadsheets.google.com/pub?key=' . PROGRAM_LIST_KEY . '&range=A2%3AL99&output=csv', 'r');
+	$handle = @fopen('https://spreadsheets.google.com/pub?key=' . PROGRAM_LIST_KEY . '&range=A2%3AL999&output=csv', 'r');
 
 	if (!$handle)
 	{
@@ -108,7 +108,7 @@ function get_program_list_from_gdoc() {
 function get_program_types_from_gdoc() {
 
 	// TODO: constant gid written in uri
-	$handle = @fopen('https://spreadsheets.google.com/pub?key=' . PROGRAM_LIST_KEY . '&gid=3&range=A2%3AB99&output=csv', 'r');
+	$handle = @fopen('https://spreadsheets.google.com/pub?key=' . PROGRAM_LIST_KEY . '&gid=3&range=A2%3AB999&output=csv', 'r');
 
 	if (!$handle)
 	{
@@ -131,7 +131,7 @@ function get_program_types_from_gdoc() {
 function get_program_rooms_from_gdoc() {
 
 	// TODO: constant gid written in uri
-	$handle = @fopen('https://spreadsheets.google.com/pub?key=' . PROGRAM_LIST_KEY . '&gid=4&range=A2%3AD99&output=csv', 'r');
+	$handle = @fopen('https://spreadsheets.google.com/pub?key=' . PROGRAM_LIST_KEY . '&gid=4&range=A2%3AD999&output=csv', 'r');
 
 	if (!$handle)
 	{
@@ -215,13 +215,13 @@ function get_program_list_html(&$program_list, &$type_list, &$room_list, $lang =
 	sort($time_structure);
 
 
-	
 
 
 
 
 
-	
+
+
 
 	$html = array();
 
@@ -274,7 +274,7 @@ function get_program_list_html(&$program_list, &$type_list, &$room_list, $lang =
 		$this_time = getdate($time_stamp);
 		$this_time_formatted = strftime("%R", $time_stamp);
 		$to_time_formatted = strftime("%R", $time_structure[$time_id+1]);
-		
+
 		if ($last_time['yday'] != $this_time['yday'] || $last_time['year'] != $this_time['year'])
 		{
 			if($day_increment > 0)
@@ -283,14 +283,14 @@ function get_program_list_html(&$program_list, &$type_list, &$room_list, $lang =
 			}
 			$day_increment += 1;
 			$html['program'] .= '<h2 id="day' . $day_increment . '">'
-				. $l10n[$lang]["day_$day_increment"] 
-				. ' (' . $this_time['mon'] . '/' . $this_time['mday'] . ')' 
+				. $l10n[$lang]["day_$day_increment"]
+				. ' (' . $this_time['mon'] . '/' . $this_time['mday'] . ')'
 				. '</h2>'
 				."\n";
 
 			$html['abstract'] .= '<h2 id="day' . $day_increment . '">'
-				. $l10n[$lang]["day_$day_increment"] 
-				. ' (' . $this_time['mon'] . '/' . $this_time['mday'] . ')' 
+				. $l10n[$lang]["day_$day_increment"]
+				. ' (' . $this_time['mon'] . '/' . $this_time['mday'] . ')'
 				. '</h2>'
 				."\n";
 
@@ -333,7 +333,7 @@ EOT;
 		{
 			// calculate colspan and rowspan
 			$colspan = $program['room'] === 0 ? sizeof($room_list)-1 : 1;
-			
+
 			$rowspan = 1;
 			while ($time_structure[$time_id + $rowspan] < $program['to'])
 			{
@@ -477,7 +477,7 @@ EOT;
 
 function get_sponsors_list_from_gdoc() {
 
-	$handle = @fopen('https://spreadsheets.google.com/pub?key=' . SPONSOR_LIST_KEY . '&range=A2%3AI99&output=csv', 'r');
+	$handle = @fopen('https://spreadsheets.google.com/pub?key=' . SPONSOR_LIST_KEY . '&range=A2%3AI999&output=csv', 'r');
 
 	if (!$handle)
 	{
@@ -508,7 +508,7 @@ function get_sponsors_list_from_gdoc() {
 			'url' => $SPON[2],
 			'logoUrl' => $SPON[3],
 		);
-		
+
 		if (trim($SPON[5]))
 		{
 			$SPON_obj['name']['en'] = $SPON[5];
@@ -673,7 +673,7 @@ else
 			fclose($fp);
 		}
 	}
-	
+
 	print "Write sponsors into " . $json_output["sponsors"] . " .\n";
 	$fp = fopen ($json_output["sponsors"], "w");
 	fwrite ($fp, json_encode($SPONS));
@@ -697,7 +697,7 @@ else
 	foreach ($program_list_output as $lang => $lang_array)
 	{
 		$program_list_html = get_program_list_html($program_list, $program_types_list, $program_rooms_list, $lang);
-	
+
 		foreach ($lang_array as $type => $path)
 		{
 			print "Write program into " . $path . " .\n";
