@@ -43,14 +43,19 @@ function recompile_and_sync()
 	fclose ($fp);
 	print ("\n");
 
-	print ("= Writing commit hashes to manifest =\n");
-	$cwd = getcwd();
-	chdir (THEME_PATH);
-	$theme_hash = trim(system("git rev-parse HEAD"));
-	chdir ($cwd);
-	$fp = fopen (TMP_PATH.'site.appcache', "a");
-	fwrite ($fp, "\n# THEME $theme_hash\n");
-	print ("\n");
+	if (file_exists(TMP_PATH.'site.appcache'))
+	{
+
+		print ("= Writing commit hashes to manifest =\n");
+		$cwd = getcwd();
+		chdir (THEME_PATH);
+		$theme_hash = trim(system("git rev-parse HEAD"));
+		chdir ($cwd);
+		$fp = fopen (TMP_PATH.'site.appcache', "a");
+		fwrite ($fp, "\n# THEME $theme_hash\n");
+		print ("\n");
+
+	}
 
 	print ("= Syncing Content =\n");
 	system ('rsync -a --delete ' . TMP_PATH . ' ' . WEBSITE_PATH);
