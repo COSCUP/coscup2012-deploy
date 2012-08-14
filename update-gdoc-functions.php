@@ -86,7 +86,7 @@ function get_program_list_from_gdoc() {
 
 		if (
 			isset($program_obj['type']) && $program_obj['type'] === 0
-			&& $program_obj['room'] === 0
+			&& $program_obj['room'] <= 0
 			&& !isset($program_obj['speaker'])
 		)
 		{
