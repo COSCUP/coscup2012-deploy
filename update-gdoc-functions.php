@@ -332,7 +332,18 @@ EOT;
 		foreach ($structure[$time_stamp] as &$program)
 		{
 			// calculate colspan and rowspan
-			$colspan = $program['room'] === 0 ? sizeof($room_list)-1 : 1;
+            if ($program['room'] === 0)
+            {
+			    $colspan = $program['room'] === 0 ? sizeof($room_list)-1 : 1;
+            }
+            else if ($program['room'] < 0)
+            {
+			    $colspan = abs($program['room']);
+            }
+            else
+            {
+			    $colspan = 1;
+            }
 
 			$rowspan = 1;
 			while ($time_structure[$time_id + $rowspan] < $program['to'])
