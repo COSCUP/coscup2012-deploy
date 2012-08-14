@@ -370,7 +370,14 @@ EOT;
 
 			if (isset($program['room']))
 			{
-				$class_list[] = "program_room_{$program['room']}";
+                if ($program['room'] <= 0)
+                {
+				    $class_list[] = "program_room_0";
+                }
+                else
+                {
+				    $class_list[] = "program_room_{$program['room']}";
+                }
 			}
 
 			if ($program['isBreak'])
